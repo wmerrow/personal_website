@@ -1,0 +1,67 @@
+body, nav {
+	font-family: "Lato", sans-serif;
+	/*color: #747704;*/
+	font-weight: 700;
+}
+
+body {
+	background-image: url("../media/background-trans.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.title-text {
+	margin-top: 140px;
+	font-weight: 100;
+	font-size: 54px;
+}
+
+.logo {
+	margin-top: 140px;
+}
+
+.subtitle {
+	font-size: 22px;
+	margin-bottom: 40px;
+}
+
+nav {
+	font-size: 16px;
+	font-weight: 300;
+	list-style-type: none;
+}
+
+a { 
+	color: #000000; 
+} 
+a:hover { 
+	text-decoration: none; 
+	color: tomato; 
+}
+
+.line {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	height: 4px;
+	background-color: #bcbbbb;
+}
+
+.graytext {
+	color: #bcbbbb;
+}
+
+h2 {
+	font-size: 32px;
+	font-weight: 550;
+	text-indent: 10px;
+}
+
+h3 {
+	font-size: 38px;
+}
+
+p {
+	font-weight: 100;
+	font-size: 16px;
+	margin-bottom: 50px;
+}
