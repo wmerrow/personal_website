@@ -1,15 +1,15 @@
 //these vars are the dimensions of the svg canvas (in pixels)
     var w = 800;
-    var h = 600;
+    var h = .75*w;
     
 //PADDING:
 //padding will leave blank space between the chart area and the svg edges 
-    var padding = [35, 25, 75, 100];
+    var padding = [0,0,0,0];
     
 //SCALES:
-//creates an ordinal scale for the x axis (years), sets range bands (in pixels)
+//creates an linear scale for the x axis (FRL rate), sets range bands (in pixels)
     var xScale = d3.scale.linear().range([padding[3], w-padding[1]]);
-//creates a linear scale for the y axis (# PACs), sets range (in pixels)
+//creates a linear scale for the y axis (achievement percentile), sets range (in pixels)
     var yScale = d3.scale.linear().range([h-padding[2]-padding[0],0]);
 
 //AXES:
@@ -19,16 +19,21 @@
     var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(4,"%").tickSize(-w+padding[1]+padding[3]).tickPadding(6);
     
 //creates a var for an SVG
-    var svg = d3.select("body").append("svg").attr("width",w).attr("height",h);
+    var svg = d3.select("body")
+    .append("svg")
+    // .attr("width",w)
+    // .attr("height",h)
+    .attr("viewBox","0 0 " + w + " " + h)
+    .attr("preserveAspectRatio","xMidYMid meet");
     
     
     d3.csv("data/grc_scatterplot_data.csv", function(data) {
    
-    //sets x axis domain (ordinal scale)
-        xScale.domain([0, d3.max(data, function(d){return +d.frl; })    ]);
+    //sets x axis domain from 0 to max FRL rate
+        xScale.domain([0, d3.max(data, function(d){return +d.frl; }) ]);
         
-    //sets y axis domain from 0 to max number of super pacs (linear scale) - expressed as an array of two numbers, 0 to max.
-        yScale.domain([0, d3.max(data, function(d){return +d.national_math; })    ]);
+    //sets y axis domain from 0 to max achievement percentile
+        yScale.domain([0, d3.max(data, function(d){return +d.national_math; }) ]);
     
     // //DRAW AXES:
     //     svg.append("g")
@@ -66,7 +71,7 @@
             .attr("cy",function(d){return padding[0]+yScale(d.national_math);})
         //sets radius (9 is scale factor)
             .attr("r", function(d){return Math.sqrt(d.enroll / Math.PI) / 9;})
-          //start here:  .attr("fill", function(d){return rgb()})
+          //start here for adding color gradient:  .attr("fill", function(d){return rgb()})
             .attr("opacity",.15)
             ;
 

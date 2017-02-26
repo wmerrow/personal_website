@@ -12,7 +12,7 @@ body {
 
 
 circle:hover {
-	/*fill: #a33000;*/
+	fill: #a33000;
 	opacity: .3;
 }
 
@@ -71,6 +71,10 @@ nav {
 	margin-bottom: 60px;
 }
 
+nav.homeNav {
+	margin-bottom: 20px;
+}
+
 li.navItem {
 	display: inline;
 	margin-right: 40px;
@@ -114,5 +118,6 @@ li.current {
 
 .headshot {
 	max-width: 200px;
-	margin-bottom: 100px;
+	margin-top: 30px;
+	/*margin-bottom: 100px;*/
 }
